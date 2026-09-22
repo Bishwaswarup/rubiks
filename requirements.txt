@@ -1,0 +1,21 @@
+# Pinned runtime environment for Python 3.10-3.12.
+# Install with: python3 -m pip install -r requirements.txt
+setuptools==73.0.1
+wheel==0.44.0
+numpy==2.1.3
+opencv-python==4.10.0.84
+
+# A two-phase solver. Install ONE of these.
+#
+# kociemba is a C extension: fast, instant startup, but needs a compiler.
+# It needs setuptools <74; the pinned first two lines provide that workaround.
+kociemba==1.2.1
+
+# RubikTwoPhase is pure Python, so it always installs, but it generates
+# ~150 MB of pruning tables the FIRST time you solve anything, which takes
+# roughly half an hour. After that it is fast. Uncomment to use it instead.
+# RubikTwoPhase
+
+# Uses an exact Hungarian assignment in colors.assign_all() instead of the
+# greedy fallback. It only matters in poor light.
+scipy==1.14.1

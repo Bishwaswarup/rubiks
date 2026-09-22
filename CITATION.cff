@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "Rubik's Cube Scanner and Solving Guide"
+version: 0.1.0
+date-released: 2026-09-22
+authors:
+  - family-names: Nayak
+    given-names: Bishwaswarup
+license: MIT
+repository-code: "REPLACE_WITH_PUBLIC_REPOSITORY_URL"
+abstract: >-
+  A webcam-guided 3x3 Rubik's Cube scanner, validator, solver, and visual
+  move guide designed to reduce scanning and beginner move-following errors.
