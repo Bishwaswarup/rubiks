@@ -8,7 +8,7 @@ authors:
   - family-names: Nayak
     given-names: Bishwaswarup
 license: MIT
-repository-code: "REPLACE_WITH_PUBLIC_REPOSITORY_URL"
+repository-code: "https://github.com/Bishwaswarup/rubiks"
 abstract: >-
   A webcam-guided 3x3 Rubik's Cube scanner, validator, solver, and visual
   move guide designed to reduce scanning and beginner move-following errors.

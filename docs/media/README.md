@@ -1,13 +1,25 @@
-# Release media
+# Media
 
-Add the following before the public release:
+| file | what it shows |
+|---|---|
+| `home_card.png` | the "before you start" orientation card |
+| `step_turn.png` | a layer-turn card, with the moving layer highlighted |
+| `step_rotate.png` | a whole-cube rotation card |
+| `pattern_cards.png` | four tiles from the `--patterns` catalogue |
 
-1. A screenshot of the six-face scanning prompt and fixed 3x3 grid.
-2. A screenshot of the solved scan review net.
-3. A screenshot of one visual move card or `--ar` overlay.
-4. A 2–3 minute demo video showing installation, scan, validation, and guided
-   solution. Upload the video to a durable host and link it from the root
-   README rather than committing a large video file to the repository.
+All four are drawn by the program's own renderer for a fixed scramble, with no
+camera or window needed:
 
-The source photographs in `data/evaluation/` are labelled evaluation examples,
-not product screenshots.
+```
+python docs/media/make_screenshots.py
+```
+
+Still to add by hand, because they need a real webcam:
+
+1. A screenshot of the scanning prompt with the 3x3 grid (`python main.py`).
+2. A screenshot of the `--ar` overlay on the live camera image.
+3. A short demo video (scan, review, guided solve), hosted externally and
+   linked from the root README rather than committed.
+
+The photographs in `data/evaluation/` are labelled calibration examples, not
+product screenshots.

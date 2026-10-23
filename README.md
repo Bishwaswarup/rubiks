@@ -2,11 +2,29 @@
 
 Point a webcam at each face of a cube, get told which layer to turn.
 
+[![selftest](https://github.com/Bishwaswarup/rubiks/actions/workflows/selftest.yml/badge.svg)](https://github.com/Bishwaswarup/rubiks/actions/workflows/selftest.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%E2%80%933.12-blue)
+
+<p align="center">
+  <img src="docs/media/home_card.png" width="32%" alt="Orientation card shown before the first move">
+  <img src="docs/media/step_turn.png" width="32%" alt="Move card: top face clockwise, with the turning layer highlighted">
+  <img src="docs/media/step_rotate.png" width="32%" alt="Move card: whole-cube rotation">
+</p>
+<p align="center">
+  <img src="docs/media/pattern_cards.png" width="96%" alt="Four tiles from the pattern catalogue, each drawn as an unfolded net">
+</p>
+
+*Above: the orientation card, a layer turn, a whole-cube rotation, and part of
+the pattern catalogue, drawn by the program itself for a fixed scramble
+(`python docs/media/make_screenshots.py` regenerates them).*
+
 ## Release and reproducibility
 
 This repository is released under the [MIT License](LICENSE). It targets
 Python 3.10–3.12 on macOS, Linux, and Windows; the automated test workflow
-tests those Python versions on Ubuntu. The scanner itself needs a webcam and
+([`selftest.yml`](.github/workflows/selftest.yml)) runs `selftest.py` on
+those Python versions on Ubuntu. The scanner itself needs a webcam and
 the operating system's camera permission.
 
 Create an isolated environment and install the pinned dependencies:
@@ -23,12 +41,8 @@ python3 selftest.py
 used during development. It is a calibration/evaluation record, not a
 machine-learning training set and not a general-accuracy benchmark.
 
-Before making a formal release, replace the placeholder repository URL in
-[`CITATION.cff`](CITATION.cff) and add the screenshots and demo video listed
-in [`docs/media/README.md`](docs/media/README.md).
-
 ```
-python3 selftest.py          # run this first -- 60-odd checks, a few seconds
+python3 selftest.py          # run this first -- 130-odd checks, a few seconds
 python3 main.py --demo       # scramble a virtual cube and solve it, no camera
 python3 main.py              # the real thing: scan with the webcam
 python3 main.py --ar         # draw the move onto the live camera image
@@ -397,7 +411,7 @@ state, and the route back comes out as ordinary face turns.
 - **Cross-check against RubikTwoPhase's own independently written cubie
   definitions**: all 18 moves and 200 random 20-move sequences agree exactly.
   This is the strongest check here — it leaves nowhere for a sign error or a
-  transposed column to hide.
+  transposed column to hide. (It runs only when RubikTwoPhase is installed.)
 - The **highlighted layer in the drawing is checked against the move tables**:
   the stickers drawn as moving must be exactly the ones the permutation moves,
   plus the turned face's own centre (which spins in place). And the arcs are
@@ -436,9 +450,9 @@ state, and the route back comes out as ordinary face turns.
   original bug violated.
 - With a solver installed, full round trips: scramble → solve → verify.
 
-Verified state as of the last run: **133/133 with both solvers installed**,
-122/122 without, including the RubikTwoPhase cross-check and 30 end-to-end
-kociemba round trips.
+Verified state as of the last runs: **130/130 with kociemba alone** (the
+pinned environment, and what CI installs), 133/133 with RubikTwoPhase also
+installed (it adds the cross-check), and 122/122 with no solver at all.
 
 One thing the tests establish that is worth knowing: a **wrong-way turn during
 scanning** — the one mistake the face lock cannot catch — is rejected every
